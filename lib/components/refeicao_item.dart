@@ -14,7 +14,13 @@ class RefeicaoItem extends StatelessWidget {
     Navigator.of(context).pushNamed(
       AppRoutes.REFEICAO_DETAIL,
       arguments: refeicao
-    );
+    ).then((result) {
+      if(result == null){
+        print('Sem Resultado');
+      }else{
+        print('O Nome da refeição é $result.');
+      }
+    });
   }
 
   @override

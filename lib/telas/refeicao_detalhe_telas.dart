@@ -3,6 +3,11 @@ import '../models/refeicao.dart';
 
 class RefeicaoDetalheTelas extends StatelessWidget {
 
+  final Function(Refeicao) onToggleFavorite;
+  final Function(Refeicao) isFavorite;
+
+  const RefeicaoDetalheTelas(this.onToggleFavorite, this.isFavorite);
+
   _createSectionTitle(BuildContext context, String title) {
     return Container(
       margin: EdgeInsets.symmetric(
@@ -89,6 +94,12 @@ class RefeicaoDetalheTelas extends StatelessWidget {
           ],
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        child:  Icon(isFavorite(refeicao) ? Icons.star : Icons.star_border),
+        onPressed: () {
+          onToggleFavorite(refeicao);
+        },
+      ),  
     );
   }
 }
